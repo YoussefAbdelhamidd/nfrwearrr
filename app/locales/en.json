@@ -42,7 +42,8 @@
     "price": "Price",
     "selectSize": "Select Size",
     "addToCart": "Add to Cart",
-    "close": "Close"
+    "close": "Close",
+    "onlyLeft": "Only {count} left in stock"
   },
   "cart": {
     "title": "Shopping Cart",

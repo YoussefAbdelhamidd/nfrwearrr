@@ -16,7 +16,7 @@ export interface CartItem {
 const PROMO_CODES: Record<string, number> = {
   nfr10: 10,
   sayed10: 10,
-  layth10: 10,
+  laith10: 10,
   farha10: 10,
   sohaila10: 10,
   thecreator15: 15,

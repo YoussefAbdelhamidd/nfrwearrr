@@ -42,7 +42,8 @@
     "price": "السعر",
     "selectSize": "اختر المقاس",
     "addToCart": "أضف إلى السلة",
-    "close": "إغلاق"
+    "close": "إغلاق",
+    "onlyLeft": "بقي {count} فقط في المخزون"
   },
   "cart": {
     "title": "سلة التسوق",

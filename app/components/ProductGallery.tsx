@@ -13,8 +13,11 @@ interface Product {
   description: string;
   descriptionAr?: string;
   price: number;
+  originalPrice?: number;
   image: string;
+  images?: string[];
   sizes: string[];
+  stock?: { [size: string]: number };
 }
 
 interface ProductGalleryProps {
@@ -40,7 +43,7 @@ export default function ProductGallery({ products, title, titleAr }: ProductGall
       name: product.name,
       nameAr: product.nameAr,
       price: product.price,
-      image: product.image,
+      image: product.images && product.images.length > 0 ? product.images[0] : product.image,
       size: size,
     });
   };
@@ -65,7 +68,7 @@ export default function ProductGallery({ products, title, titleAr }: ProductGall
               >
                 <div className="relative h-64 w-full overflow-hidden">
                   <Image
-                    src={product.image}
+                    src={product.images && product.images.length > 0 ? product.images[0] : product.image}
                     alt={productName}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -75,9 +78,25 @@ export default function ProductGallery({ products, title, titleAr }: ProductGall
                   <h3 className="text-xl font-semibold text-black mb-2">
                     {productName}
                   </h3>
-                  <p className="text-lg font-bold text-black">
-                    ${product.price}
-                  </p>
+                  <div className="flex items-center gap-2">
+                    {product.originalPrice && product.originalPrice > product.price ? (
+                      <>
+                        <span className="text-lg font-bold text-black">
+                          {product.price} LE
+                        </span>
+                        <span className="text-sm text-gray-500 line-through">
+                          {product.originalPrice} LE
+                        </span>
+                        <span className="px-2 py-1 text-xs font-semibold bg-red-500 text-white rounded">
+                          Sale
+                        </span>
+                      </>
+                    ) : (
+                      <p className="text-lg font-bold text-black">
+                        {product.price} LE
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
             );

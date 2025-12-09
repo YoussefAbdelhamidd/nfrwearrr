@@ -12,8 +12,11 @@ interface Product {
   description: string;
   descriptionAr?: string;
   price: number;
+  originalPrice?: number;
   image: string;
+  images?: string[];
   sizes: string[];
+  stock?: { [size: string]: number };
 }
 
 interface ProductModalProps {
@@ -31,10 +34,14 @@ export default function ProductModal({
 }: ProductModalProps) {
   const { t, language, dir } = useLanguage();
   const [selectedSize, setSelectedSize] = useState<string>('');
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+
+  const images = product?.images && product.images.length > 0 ? product.images : (product?.image ? [product.image] : []);
 
   useEffect(() => {
     if (isOpen && product) {
       setSelectedSize(product.sizes[0] || '');
+      setCurrentImageIndex(0);
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -44,6 +51,18 @@ export default function ProductModal({
       document.body.style.overflow = 'unset';
     };
   }, [isOpen, product]);
+
+  const nextImage = () => {
+    if (images.length > 0) {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (images.length > 0) {
+      setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    }
+  };
 
   if (!isOpen || !product) return null;
 
@@ -91,14 +110,91 @@ export default function ProductModal({
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
           {/* Image Section */}
-          <div className="relative h-[400px] md:h-[600px] w-full">
-            <Image
-              src={product.image}
-              alt={productName}
-              fill
-              className="object-cover"
-              priority
-            />
+          <div className="relative h-[400px] md:h-[600px] w-full overflow-hidden">
+            {images.length > 0 && (
+              <>
+                <Image
+                  src={images[currentImageIndex]}
+                  alt={productName}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+                
+                {/* Navigation Arrows */}
+                {images.length > 1 && (
+                  <>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        prevImage();
+                      }}
+                      className={`absolute top-1/2 ${dir === 'rtl' ? 'right-4' : 'left-4'} -translate-y-1/2 z-10 p-2 bg-white/80 hover:bg-white rounded-full transition-all`}
+                      aria-label="Previous image"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className="h-6 w-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d={dir === 'rtl' ? "M9 5l7 7-7 7" : "M15 19l-7-7 7-7"}
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        nextImage();
+                      }}
+                      className={`absolute top-1/2 ${dir === 'rtl' ? 'left-4' : 'right-4'} -translate-y-1/2 z-10 p-2 bg-white/80 hover:bg-white rounded-full transition-all`}
+                      aria-label="Next image"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className="h-6 w-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d={dir === 'rtl' ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"}
+                        />
+                      </svg>
+                    </button>
+                  </>
+                )}
+                
+                {/* Image Indicators */}
+                {images.length > 1 && (
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+                    {images.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCurrentImageIndex(index);
+                        }}
+                        className={`h-2 rounded-full transition-all ${
+                          index === currentImageIndex
+                            ? 'w-8 bg-white'
+                            : 'w-2 bg-white/50 hover:bg-white/75'
+                        }`}
+                        aria-label={`Go to image ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
           </div>
 
           {/* Content Section */}
@@ -108,9 +204,25 @@ export default function ProductModal({
                 {productName}
               </h2>
               
-              <p className="text-2xl md:text-3xl font-semibold text-black mb-6">
-                {t('product.price')}: ${product.price}
-              </p>
+              <div className="mb-6">
+                {product.originalPrice && product.originalPrice > product.price ? (
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <span className="text-2xl md:text-3xl font-semibold text-black">
+                      {t('product.price')}: {product.price} LE
+                    </span>
+                    <span className="text-xl md:text-2xl text-gray-500 line-through">
+                      {product.originalPrice} LE
+                    </span>
+                    <span className="px-3 py-1 text-sm font-semibold bg-red-500 text-white rounded">
+                      Sale
+                    </span>
+                  </div>
+                ) : (
+                  <p className="text-2xl md:text-3xl font-semibold text-black">
+                    {t('product.price')}: {product.price} LE
+                  </p>
+                )}
+              </div>
 
               <div className="mb-6">
                 <p className="text-gray-700 leading-relaxed text-base md:text-lg">
@@ -124,19 +236,29 @@ export default function ProductModal({
                   {t('product.selectSize')}:
                 </label>
                 <div className="flex flex-wrap gap-3">
-                  {product.sizes.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className={`px-6 py-3 border-2 rounded-lg font-medium transition-all ${
-                        selectedSize === size
-                          ? 'border-black bg-black text-white'
-                          : 'border-gray-300 bg-white text-black hover:border-black'
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
+                  {product.sizes.map((size) => {
+                    const stockCount = product.stock?.[size];
+                    const showStock = stockCount !== undefined && stockCount > 0;
+                    return (
+                      <div key={size} className="flex flex-col items-center gap-1">
+                        <button
+                          onClick={() => setSelectedSize(size)}
+                          className={`px-6 py-3 border-2 rounded-lg font-medium transition-all ${
+                            selectedSize === size
+                              ? 'border-black bg-black text-white'
+                              : 'border-gray-300 bg-white text-black hover:border-black'
+                          }`}
+                        >
+                          {size}
+                        </button>
+                        {showStock && (
+                          <span className="text-xs text-orange-600 font-semibold">
+                            {t('product.onlyLeft', { count: stockCount })}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>

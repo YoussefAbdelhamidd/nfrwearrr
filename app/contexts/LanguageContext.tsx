@@ -7,7 +7,7 @@ type Language = 'en' | 'ar';
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
+  t: (key: string, params?: Record<string, any>) => string;
   dir: 'ltr' | 'rtl';
 }
 
@@ -49,13 +49,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = lang;
   };
 
-  const t = (key: string): string => {
+  const t = (key: string, params?: Record<string, any>): string => {
     const keys = key.split('.');
     let value: any = translations;
     for (const k of keys) {
       value = value?.[k];
     }
-    return value || key;
+    let result = value || key;
+    if (params) {
+      Object.keys(params).forEach((paramKey) => {
+        result = result.replace(`{${paramKey}}`, params[paramKey]);
+      });
+    }
+    return result;
   };
 
   const dir = language === 'ar' ? 'rtl' : 'ltr';

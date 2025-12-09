@@ -59,24 +59,24 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
       message += `${index + 1}. ${itemName}\n`;
       message += `   ${sizeLabel}: ${item.size}\n`;
       message += `   ${quantityLabel}: ${item.quantity}\n`;
-      message += `   ${priceLabel}: $${item.price}\n`;
-      message += `   ${isArabic ? 'المجموع' : 'Subtotal'}: $${(item.price * item.quantity).toFixed(2)}\n\n`;
+      message += `   ${priceLabel}: ${item.price} LE\n`;
+      message += `   ${isArabic ? 'المجموع' : 'Subtotal'}: ${(item.price * item.quantity).toFixed(2)} LE\n\n`;
     });
 
     message += '---\n';
     
     const subtotalLabel = isArabic ? 'المجموع الفرعي' : 'Subtotal';
-    message += `${subtotalLabel}: $${totalPrice.toFixed(2)}\n`;
+    message += `${subtotalLabel}: ${totalPrice.toFixed(2)} LE\n`;
 
     if (hasPromoCode) {
       const promoLabel = isArabic ? 'كود الخصم' : 'Promo Code';
       const discountLabel = isArabic ? 'الخصم' : 'Discount';
       message += `${promoLabel}: ${promoCode.toUpperCase()}\n`;
-      message += `${discountLabel} (${discountPercent}%): -$${discountAmount.toFixed(2)}\n`;
+      message += `${discountLabel} (${discountPercent}%): -${discountAmount.toFixed(2)} LE\n`;
     }
 
     const totalLabel = isArabic ? 'الإجمالي الكلي' : 'Total';
-    message += `${totalLabel}: $${finalPrice.toFixed(2)}`;
+    message += `${totalLabel}: ${finalPrice.toFixed(2)} LE`;
 
     return encodeURIComponent(message);
   };
@@ -139,7 +139,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                       {itemName} ({item.size}) × {item.quantity}
                     </span>
                     <span className="font-medium text-black">
-                      ${(item.price * item.quantity).toFixed(2)}
+                      {(item.price * item.quantity).toFixed(2)} LE
                     </span>
                   </div>
                 );
@@ -147,19 +147,19 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
               <div className="border-t border-gray-300 pt-2 mt-2 space-y-1">
                 <div className="flex justify-between">
                   <span className="text-gray-700">{t('checkout.subtotal')}:</span>
-                  <span className="text-black font-medium">${totalPrice.toFixed(2)}</span>
+                  <span className="text-black font-medium">{totalPrice.toFixed(2)} LE</span>
                 </div>
                 {hasPromoCode && (
                   <>
                     <div className="flex justify-between text-green-600">
                       <span>{t('checkout.promoCode')}: {promoCode.toUpperCase()}</span>
-                      <span>-${discountAmount.toFixed(2)}</span>
+                      <span>-{discountAmount.toFixed(2)} LE</span>
                     </div>
                   </>
                 )}
                 <div className="flex justify-between font-bold pt-1 border-t border-gray-300">
                   <span className="text-black">{t('checkout.total')}:</span>
-                  <span className="text-black">${finalPrice.toFixed(2)}</span>
+                  <span className="text-black">{finalPrice.toFixed(2)} LE</span>
                 </div>
               </div>
             </div>

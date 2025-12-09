@@ -154,7 +154,7 @@ export default function CartSideMenu() {
                         {t('cart.size')}: {item.size}
                       </p>
                       <p className="text-lg font-bold text-black mb-3">
-                        ${item.price}
+                        {item.price} LE
                       </p>
 
                       {/* Quantity Controls */}
@@ -310,19 +310,19 @@ export default function CartSideMenu() {
             <div className="space-y-2">
               <div className="flex justify-between items-center text-lg">
                 <span className="text-black">{t('cart.subtotal')}:</span>
-                <span className="text-black font-medium">${totalPrice.toFixed(2)}</span>
+                <span className="text-black font-medium">{totalPrice.toFixed(2)} LE</span>
               </div>
               {hasPromoCode && (
                 <>
                   <div className="flex justify-between items-center text-sm text-green-600">
                     <span>{t('cart.discount')} ({promoCode.toUpperCase()}):</span>
-                    <span>-${discountAmount.toFixed(2)}</span>
+                    <span>-{discountAmount.toFixed(2)} LE</span>
                   </div>
                 </>
               )}
               <div className="flex justify-between items-center text-xl font-bold pt-2 border-t border-gray-200">
                 <span className="text-black">{t('cart.total')}:</span>
-                <span className="text-black">${finalPrice.toFixed(2)}</span>
+                <span className="text-black">{finalPrice.toFixed(2)} LE</span>
               </div>
             </div>
 
