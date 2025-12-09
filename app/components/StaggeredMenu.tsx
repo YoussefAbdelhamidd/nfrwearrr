@@ -241,7 +241,6 @@ export default function StaggeredMenu({
               ))}
             </div>
           )}
-          </div>
         </div>
       </div>
     </>

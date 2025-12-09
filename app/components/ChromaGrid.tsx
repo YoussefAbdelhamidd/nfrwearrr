@@ -93,7 +93,7 @@ export default function ChromaGrid({
       {items.map((item, index) => (
         <a
           key={index}
-          ref={(el) => (itemRefs.current[index] = el)}
+          ref={(el) => { itemRefs.current[index] = el; }}
           href={item.url}
           className="group relative overflow-hidden rounded-lg"
           style={{
