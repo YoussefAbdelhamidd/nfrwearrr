@@ -141,6 +141,7 @@ export default function Navbar() {
               changeMenuColorOnOpen={true}
               colors={['#B19EEF', '#5227FF']}
               accentColor="#ff6b6b"
+              onCartClick={() => setIsOpen(true)}
               cartIcon={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

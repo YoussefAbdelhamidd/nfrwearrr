@@ -30,6 +30,7 @@ interface StaggeredMenuProps {
   onMenuOpen?: () => void;
   onMenuClose?: () => void;
   cartIcon?: React.ReactNode;
+  onCartClick?: () => void;
 }
 
 export default function StaggeredMenu({
@@ -47,6 +48,7 @@ export default function StaggeredMenu({
   onMenuOpen,
   onMenuClose,
   cartIcon,
+  onCartClick,
 }: StaggeredMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -202,7 +204,10 @@ export default function StaggeredMenu({
             {cartIcon && (
               <div className="mt-4 pt-6 border-t border-white/20">
                 <button
-                  onClick={handleItemClick}
+                  onClick={() => {
+                    handleItemClick();
+                    onCartClick?.();
+                  }}
                   className="flex items-center gap-4 text-2xl font-semibold text-white transition-transform hover:translate-x-2"
                   aria-label="Shopping cart"
                 >

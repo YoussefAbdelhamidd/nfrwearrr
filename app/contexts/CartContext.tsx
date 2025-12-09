@@ -24,6 +24,11 @@ const PROMO_CODES: Record<string, number> = {
   shehab10: 10,
   mariana10: 10,
   mostafa10: 10,
+  gelo10: 10,
+  maro10: 10,
+  KOU10:10,
+
+
 };
 
 interface CartContextType {
