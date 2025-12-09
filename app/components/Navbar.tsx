@@ -16,6 +16,7 @@ export default function Navbar() {
 
   const menuItems = [
     { label: t('nav.home'), ariaLabel: t('common.goToHome'), link: '/' },
+    { label: t('nav.shop'), ariaLabel: t('common.viewShop'), link: '/shop' },
     { label: t('nav.hoodies'), ariaLabel: t('common.viewHoodies'), link: '/hoodies' },
     { label: t('nav.pants'), ariaLabel: t('common.viewPants'), link: '/pants' },
     { label: t('nav.bundles'), ariaLabel: t('common.viewBundles'), link: '/bundles' },
@@ -62,6 +63,12 @@ export default function Navbar() {
             className="text-sm font-medium text-black transition-colors hover:text-black"
           >
             {t('nav.home')}
+          </Link>
+          <Link
+            href="/shop"
+            className="text-sm font-medium text-black transition-colors hover:text-black"
+          >
+            {t('nav.shop')}
           </Link>
           <Link
             href="/hoodies"

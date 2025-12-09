@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Home",
+    "shop": "Shop",
     "hoodies": "Hoodies",
     "pants": "Pants",
     "bundles": "Bundles",
@@ -27,6 +28,7 @@
   },
   "common": {
     "goToHome": "Go to home page",
+    "viewShop": "View shop",
     "viewHoodies": "View hoodies",
     "viewPants": "View pants",
     "viewBundles": "View bundles"
