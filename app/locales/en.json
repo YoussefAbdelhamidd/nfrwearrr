@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "home": "Home",
+    "hoodies": "Hoodies",
+    "pants": "Pants",
+    "bundles": "Bundles",
+    "cart": "Shopping cart"
+  },
+  "hero": {
+    "slide1": {
+      "title": "New Collection",
+      "subtitle": "Discover the latest trends",
+      "button": "Shop Now"
+    },
+    "slide2": {
+      "title": "Premium Quality",
+      "subtitle": "Style meets comfort",
+      "button": "Explore"
+    },
+    "slide3": {
+      "title": "Limited Edition",
+      "subtitle": "Exclusive designs for you",
+      "button": "View Collection"
+    },
+    "prevSlide": "Previous slide",
+    "nextSlide": "Next slide"
+  },
+  "common": {
+    "goToHome": "Go to home page",
+    "viewHoodies": "View hoodies",
+    "viewPants": "View pants",
+    "viewBundles": "View bundles"
+  },
+  "aboutUs": {
+    "title": "About Us",
+    "description1": "Welcome to NFR Wear, where style meets quality. We are passionate about creating premium clothing that combines comfort, durability, and contemporary design.",
+    "description2": "Our mission is to provide you with the finest apparel that reflects your unique personality and lifestyle. Every piece in our collection is carefully crafted with attention to detail and commitment to excellence.",
+    "description3": "Join us on this journey as we continue to redefine fashion and bring you the latest trends in streetwear and casual wear.",
+    "imageAlt": "About NFR Wear"
+  },
+  "product": {
+    "price": "Price",
+    "selectSize": "Select Size",
+    "addToCart": "Add to Cart",
+    "close": "Close"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "size": "Size",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "checkout": "Checkout",
+    "close": "Close",
+    "remove": "Remove item",
+    "increaseQuantity": "Increase quantity",
+    "decreaseQuantity": "Decrease quantity",
+    "enterPromoCode": "Enter promo code",
+    "apply": "Apply",
+    "promoCodeRequired": "Please enter a promo code",
+    "invalidPromoCode": "Invalid promo code",
+    "promoCodeApplied": "Promo code applied"
+  },
+  "checkout": {
+    "title": "Complete Your Order",
+    "description": "You will be redirected to WhatsApp to proceed with your order. Please confirm your order details below.",
+    "orderSummary": "Order Summary",
+    "subtotal": "Subtotal",
+    "promoCode": "Promo Code",
+    "total": "Total",
+    "continueOnWhatsApp": "Continue on WhatsApp",
+    "close": "Close"
+  },
+  "exploreOurItems": {
+    "title": "Explore Our Items",
+    "bundles": {
+      "title": "Bundles",
+      "subtitle": "Complete Outfits"
+    },
+    "pants": {
+      "title": "Pants",
+      "subtitle": "Premium Quality"
+    },
+    "hoodies": {
+      "title": "Hoodies",
+      "subtitle": "Comfort & Style"
+    }
+  },
+  "footer": {
+    "brandDescription": "Premium streetwear fashion",
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us",
+    "quickLinks": "Quick Links",
+    "copyright": "© {year} NFR Wear. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  }
+}
