@@ -86,6 +86,9 @@ const canela = localFont({
 export const metadata: Metadata = {
   title: "NFR Wear",
   description: "NFR Wear Store ",
+  icons: {
+    icon: '/vercel.ico',
+  },
 };
 
 export default function RootLayout({
