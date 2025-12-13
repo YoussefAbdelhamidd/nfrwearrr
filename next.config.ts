@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
         hostname: 'images.unsplash.com',
       },
     ],
+    minimumCacheTTL: 0,
+    unoptimized: false,
   },
 };
 

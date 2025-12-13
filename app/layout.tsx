@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import CartSideMenu from "./components/CartSideMenu";
+import WelcomeModal from "./components/WelcomeModal";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { CartProvider } from "./contexts/CartContext";
 
@@ -106,6 +107,7 @@ export default function RootLayout({
           <CartProvider>
             <Navbar />
             <CartSideMenu />
+            <WelcomeModal />
             {children}
           </CartProvider>
         </LanguageProvider>

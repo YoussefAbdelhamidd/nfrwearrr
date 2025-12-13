@@ -11,7 +11,7 @@ const pants = [
     price: 850,
     originalPrice: 900,
     image: '/pants/pants1.jpg',
-    images: ['/pants/pants1.jpg', '/pants/pants4.jpg', '/pants/pants7.jpg'],
+    images: ['/pants/pants1.jpg', '/pants/pants5.jpg', '/pants/pants6.jpg' , '/pants/pants2.jpg'],
     sizes: ['S', 'M', 'L', 'XL',],
     stock: {
       'S': 5,
@@ -27,8 +27,8 @@ const pants = [
     descriptionAr: 'تصميم عصري مع راحة استثنائية. مثالي للمناسبات الكاجوال وشبه الرسمية.',
     price: 850,
     originalPrice: 900,
-    image: '/pants/pants2.jpg',
-    images: ['/pants/pants2.jpg', '/pants/pants3.jpg', '/pants/pants5.jpg', '/pants/pants6.jpg'],
+    image: '/pants/pants3.jpg',
+    images: ['/pants/pants3.jpg', '/pants/pants2.jpg', '/pants/pants4.jpg', '/pants/pants7.jpg'],
     sizes: ['S', 'M', 'L', 'XL',],
     stock: {
       'S': 5,

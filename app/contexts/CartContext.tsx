@@ -12,23 +12,22 @@ export interface CartItem {
   quantity: number;
 }
 
-// Promo codes with their discount percentages
-const PROMO_CODES: Record<string, number> = {
-  nfr10: 10,
-  sayed10: 10,
-  laith10: 10,
-  farha10: 10,
-  sohaila10: 10,
-  thecreator15: 15,
-  mega10: 10,
-  shehab10: 10,
-  mariana10: 10,
-  mostafa10: 10,
-  gelo10: 10,
-  maro10: 10,
-  KOU10:10,
-
-
+// Promo codes - valid codes list
+const PROMO_CODES: Record<string, boolean> = {
+  nfr10: true,
+  sayed10: true,
+  laith10: true,
+  farha10: true,
+  sohaila10: true,
+  thecreator15: true,
+  mega10: true,
+  shehab10: true,
+  mariana10: true,
+  mostafa10: true,
+  gelo10: true,
+  maro10: true,
+  KOU10: true,
+  fermo10: true,
 };
 
 interface CartContextType {
@@ -114,15 +113,25 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   const getDiscountPercentage = () => {
-    if (!promoCode) return 0;
-    const normalizedCode = promoCode.toLowerCase().trim();
-    return PROMO_CODES[normalizedCode] || 0;
+    // This function is kept for backward compatibility but returns 0
+    // Discount is now calculated as fixed amounts per item
+    return 0;
   };
 
   const getDiscountAmount = () => {
-    const total = getTotalPrice();
-    const discountPercent = getDiscountPercentage();
-    return (total * discountPercent) / 100;
+    if (!promoCode) return 0;
+    const normalizedCode = promoCode.toLowerCase().trim();
+    if (!PROMO_CODES[normalizedCode]) return 0;
+
+    // Calculate discount: 50 L3 per single item, 100 L3 per bundle
+    let discount = 0;
+    items.forEach((item) => {
+      const isBundle = item.id.toLowerCase().startsWith('bundle');
+      const discountPerItem = isBundle ? 100 : 50;
+      discount += discountPerItem * item.quantity;
+    });
+
+    return discount;
   };
 
   const getFinalPrice = () => {

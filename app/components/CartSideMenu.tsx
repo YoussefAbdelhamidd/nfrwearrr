@@ -17,7 +17,6 @@ export default function CartSideMenu() {
     promoCode,
     setPromoCode,
     isValidPromoCode,
-    getDiscountPercentage,
     getDiscountAmount,
     getFinalPrice,
   } = useCart();
@@ -63,7 +62,6 @@ export default function CartSideMenu() {
   if (!isOpen) return null;
 
   const totalPrice = getTotalPrice();
-  const discountPercent = getDiscountPercentage();
   const discountAmount = getDiscountAmount();
   const finalPrice = getFinalPrice();
   const hasPromoCode = !!promoCode;
@@ -263,7 +261,7 @@ export default function CartSideMenu() {
                       {t('cart.promoCodeApplied')}: {promoCode.toUpperCase()}
                     </span>
                     <span className="text-sm text-green-600">
-                      (-{discountPercent}%)
+                      (-{discountAmount.toFixed(2)} LE)
                     </span>
                   </div>
                   <button

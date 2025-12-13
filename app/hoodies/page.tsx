@@ -11,7 +11,7 @@ const hoodies = [
     price: 850.00,
     originalPrice: 900.00,
     image: '/hoodies/hoodie1.jpg',
-    images: ['/hoodies/hoodie1.jpg', '/hoodies/hoodie2.jpg', '/hoodies/hoodie5.jpg', '/hoodies/hoodie6.jpg'],
+    images: ['/hoodies/hoodie1.jpg', '/hoodies/hoodie4.jpg', '/hoodies/hoodie2.jpg', '/hoodies/hoodie8.jpg'],
     sizes: ['S', 'M', 'L', 'XL',],
     stock: {
       'S': 5,
@@ -28,7 +28,7 @@ const hoodies = [
     price: 850.00,
     originalPrice: 900.00,
     image: '/hoodies/hoodie3.jpg',
-    images: ['/hoodies/hoodie3.jpg', '/hoodies/hoodie4.jpg', '/hoodies/hoodie7.jpg', '/hoodies/hoodie10.jpg'],
+    images: ['/hoodies/hoodie5.jpg',  '/hoodies/hoodie7.jpg', '/hoodies/hoodie6.jpg'],
     sizes: ['S', 'M', 'L', 'XL',],
     stock: {
       'S': 5,

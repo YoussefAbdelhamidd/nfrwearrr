@@ -14,7 +14,6 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
     items,
     getTotalPrice,
     promoCode,
-    getDiscountPercentage,
     getDiscountAmount,
     getFinalPrice,
   } = useCart();
@@ -35,12 +34,11 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
   if (!isOpen) return null;
 
   const totalPrice = getTotalPrice();
-  const discountPercent = getDiscountPercentage();
   const discountAmount = getDiscountAmount();
   const finalPrice = getFinalPrice();
   const hasPromoCode = !!promoCode;
   // Format: Remove leading 0 and add country code (Egypt: +20)
-  const phoneNumber = '201210462988';
+  const phoneNumber = '+2001202534794';
 
   // Format cart items into WhatsApp message
   const formatWhatsAppMessage = () => {
@@ -72,7 +70,7 @@ export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
       const promoLabel = isArabic ? 'كود الخصم' : 'Promo Code';
       const discountLabel = isArabic ? 'الخصم' : 'Discount';
       message += `${promoLabel}: ${promoCode.toUpperCase()}\n`;
-      message += `${discountLabel} (${discountPercent}%): -${discountAmount.toFixed(2)} LE\n`;
+      message += `${discountLabel}: -${discountAmount.toFixed(2)} LE\n`;
     }
 
     const totalLabel = isArabic ? 'الإجمالي الكلي' : 'Total';

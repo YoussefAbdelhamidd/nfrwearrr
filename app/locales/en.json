@@ -35,9 +35,9 @@
   },
   "aboutUs": {
     "title": "About Us",
-    "description1": "Welcome to NFR Wear, where style meets quality. We are passionate about creating premium clothing that combines comfort, durability, and contemporary design.",
-    "description2": "Our mission is to provide you with the finest apparel that reflects your unique personality and lifestyle. Every piece in our collection is carefully crafted with attention to detail and commitment to excellence.",
-    "description3": "Join us on this journey as we continue to redefine fashion and bring you the latest trends in streetwear and casual wear.",
+    "description1": "NFR Wear is a modern Egyptian streetwear brand inspired by the timeless spirit of ancient Kemet. Our name carries a pharaonic essence that reflects authenticity, strength, and a deep connection to our roots.",
+    "description2": "Built on the belief that culture can shape style, we blend heritage with modern urban fashion—creating pieces that feel contemporary, bold, and proudly Egyptian. Our slogan, \"From Kemet to the Streets,\" represents our mission: taking the history, energy, and identity of our ancestors and transforming them into designs crafted for today's streets and today's generation.",
+    "description3": "Every piece we create is made with attention to detail, premium quality, and a vision to bring Egyptian streetwear to the global stage.",
     "imageAlt": "About NFR Wear"
   },
   "product": {
@@ -98,5 +98,14 @@
     "copyright": "© {year} NFR Wear. All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
+  },
+  "welcome": {
+    "title": "Welcome to NFR",
+    "description": "Since you are first time visiting us, here is a promo code: 50 LE per item. Use wisely!",
+    "promoCodeLabel": "Your Promo Code",
+    "copyPromoCode": "Copy promo code",
+    "discountInfo": "50 LE discount per item",
+    "getStarted": "Get Started",
+    "close": "Close"
   }
 }
